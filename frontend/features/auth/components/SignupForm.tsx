@@ -35,10 +35,15 @@ export default function SignupForm() {
       className="w-full max-w-sm space-y-0.5"
     >
       <div>
+        <Input placeholder="Full Name" type="text" {...register("fullName")} />
+        <p className="min-h-4 text-xs text-red-500">
+          {errors.fullName?.message}
+        </p>
+      </div>
+      <div>
         <Input placeholder="Email" type="email" {...register("email")} />
         <p className="min-h-4 text-xs text-red-500">{errors.email?.message}</p>
       </div>
-
       <div>
         <Input
           placeholder="Password"
@@ -49,11 +54,9 @@ export default function SignupForm() {
           {errors.password?.message}
         </p>
       </div>
-
       <Button type="submit" className="w-full">
         Sign Up
       </Button>
-
       <p className="text-center text-sm">
         Already have an account?{" "}
         <Link href="/login" className="underline">
