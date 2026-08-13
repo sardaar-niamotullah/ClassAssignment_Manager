@@ -1,6 +1,7 @@
 "use client";
 
 import { MoreVertical } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 import {
   DropdownMenu,
@@ -24,8 +25,12 @@ export default function ClassCard({
   studentCount,
   assignmentCount,
 }: ClassCardProps) {
+  const router = useRouter();
+  // const handleEdit = () => {
+  //   console.log(`Edit class ${id}`);
+  // };
   const handleEdit = () => {
-    console.log(`Edit class ${id}`);
+    router.push(`/admin/classes/${id}/edit`);
   };
 
   const handleDelete = () => {
