@@ -26,7 +26,7 @@ export default function LoginForm() {
     console.log("LOGIN CLICKED");
     console.log(data);
 
-    router.push("/home");
+    router.push("/admin");
   };
 
   return (

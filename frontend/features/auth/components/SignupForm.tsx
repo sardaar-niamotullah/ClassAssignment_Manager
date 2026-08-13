@@ -26,7 +26,7 @@ export default function SignupForm() {
     console.log("SIGNUP CLICKED");
     console.log(data);
 
-    router.push("/home");
+    router.push("/admin");
   };
 
   return (
