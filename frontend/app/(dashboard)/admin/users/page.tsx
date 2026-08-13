@@ -1,3 +1,5 @@
+import { redirect } from "next/navigation";
+
 export default function UsersPage() {
-  return <h1>Users</h1>;
+  redirect("/admin/users/new");
 }
