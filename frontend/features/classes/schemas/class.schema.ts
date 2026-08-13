@@ -6,9 +6,11 @@ export const classSchema = z.object({
     .min(1, "Class name is required")
     .max(16, "Class name cannot exceed 16 characters"),
 
-  teachers: z.array(z.string()).optional(),
+  teachers: z.array(z.string()),
 
-  students: z.array(z.string()).optional(),
+  students: z.array(z.string()),
 });
 
-export type ClassFormData = z.infer<typeof classSchema>;
+export type ClassFormData = z.infer<
+  typeof classSchema
+>;

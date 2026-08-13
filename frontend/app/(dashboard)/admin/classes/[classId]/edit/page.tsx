@@ -6,36 +6,22 @@ type Props = {
   }>;
 };
 
-export default async function EditClassPage({
-  params,
-}: Props) {
+export default async function EditClassPage({ params }: Props) {
   const { classId } = await params;
 
   const mockClass = {
     name: "Class Six",
 
-    teachers: [
-      "Ratul",
-      "Tim",
-    ],
+    teachers: ["Ratul", "Tim"],
 
-    students: [
-      "Student One",
-      "Student Two",
-      "Student Three",
-    ],
+    students: ["Student One", "Student Three"],
   };
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold">
-        Edit Class #{classId}
-      </h1>
+      <h1 className="text-2xl font-bold">Edit Class #{classId}</h1>
 
-      <ClassForm
-        isEdit
-        initialValues={mockClass}
-      />
+      <ClassForm isEdit initialValues={mockClass} />
     </div>
   );
 }
