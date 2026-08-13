@@ -1,8 +1,7 @@
 "use client";
 
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { MoreVertical } from "lucide-react";
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 type TeacherAssignmentCardProps = {
   id: number;
@@ -30,12 +30,14 @@ export default function TeacherAssignmentCard({
   isPublished,
   questionPdf,
 }: TeacherAssignmentCardProps) {
+  const router = useRouter();
+
   const handlePublish = () => {
     console.log("Publish", id);
   };
 
   const handleEdit = () => {
-    console.log("Edit", id);
+    router.push(`/teacher/assignments/${id}`);
   };
 
   const handleDelete = () => {
@@ -46,15 +48,12 @@ export default function TeacherAssignmentCard({
     <div className="flex justify-between rounded-lg border p-4">
       <div className="space-y-1">
         <h3 className="font-semibold text-lg">{name}</h3>
-
         <p>Total Marks: {totalMarks}</p>
         <p>Deadline: {deadline}</p>
-
         <Link href="#" className="text-sm underline">
           {questionPdf}
         </Link>
       </div>
-
       <div className="flex flex-col items-end gap-2">
         {isPublished ? (
           <p className="text-sm font-medium text-green-600">
@@ -65,17 +64,14 @@ export default function TeacherAssignmentCard({
             Publish
           </Button>
         )}
-
         <DropdownMenu>
           <DropdownMenuTrigger className="rounded-md p-2 hover:bg-accent">
             <MoreVertical className="size-5" />
           </DropdownMenuTrigger>
-
           <DropdownMenuContent align="end">
             <DropdownMenuItem onClick={handleEdit}>
               Edit Assignment
             </DropdownMenuItem>
-
             <DropdownMenuItem variant="destructive" onClick={handleDelete}>
               Delete Assignment
             </DropdownMenuItem>
