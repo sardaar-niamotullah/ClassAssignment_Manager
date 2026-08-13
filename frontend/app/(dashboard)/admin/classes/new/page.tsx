@@ -1,9 +1,13 @@
-export default function NewClassPage() {
+import ClassForm from "@/features/classes/components/ClassForm";
+
+export default function CreateClassPage() {
   return (
-    <main className="min-h-screen flex items-center justify-center">
-      <h1 className="text-3xl font-bold">
-        Create new class
+    <div className="space-y-6">
+      <h1 className="text-2xl font-bold">
+        Create New Class
       </h1>
-    </main>
+
+      <ClassForm />
+    </div>
   );
 }

@@ -1,7 +1,41 @@
-export default function EditClass() {
+import ClassForm from "@/features/classes/components/ClassForm";
+
+type Props = {
+  params: Promise<{
+    classId: string;
+  }>;
+};
+
+export default async function EditClassPage({
+  params,
+}: Props) {
+  const { classId } = await params;
+
+  const mockClass = {
+    name: "Class Six",
+
+    teachers: [
+      "Ratul",
+      "Tim",
+    ],
+
+    students: [
+      "Student One",
+      "Student Two",
+      "Student Three",
+    ],
+  };
+
   return (
-    <main className="min-h-screen flex items-center justify-center">
-      <h1 className="text-3xl font-bold">Edit class</h1>
-    </main>
+    <div className="space-y-6">
+      <h1 className="text-2xl font-bold">
+        Edit Class #{classId}
+      </h1>
+
+      <ClassForm
+        isEdit
+        initialValues={mockClass}
+      />
+    </div>
   );
 }
