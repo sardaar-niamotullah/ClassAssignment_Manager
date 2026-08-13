@@ -32,19 +32,23 @@ export default function LoginForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="w-full max-w-sm space-y-4"
+      className="w-full max-w-sm space-y-0.5"
     >
-      <Input placeholder="Email" type="email" {...register("email")} />
+      <div>
+        <Input placeholder="Email" type="email" {...register("email")} />
+        <p className="min-h-4 text-xs text-red-500">{errors.email?.message}</p>
+      </div>
 
-      {errors.email && (
-        <p className="text-sm text-red-500">{errors.email.message}</p>
-      )}
-
-      <Input placeholder="Password" type="password" {...register("password")} />
-
-      {errors.password && (
-        <p className="text-sm text-red-500">{errors.password.message}</p>
-      )}
+      <div>
+        <Input
+          placeholder="Password"
+          type="password"
+          {...register("password")}
+        />
+        <p className="min-h-4 text-xs text-red-500">
+          {errors.password?.message}
+        </p>
+      </div>
 
       <Button type="submit" className="w-full">
         Login
