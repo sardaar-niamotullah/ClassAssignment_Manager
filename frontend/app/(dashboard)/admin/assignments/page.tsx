@@ -1,38 +1,23 @@
+import Link from "next/link";
+import SectionHeading from "@/components/section-heading";
+import { Button } from "@/components/ui/button";
 import AssignmentCard from "@/features/assignments/components/AssignmentCard";
-
-const assignments = [
-  {
-    id: 1,
-    name: "Math Homework",
-    className: "Class Six",
-    createdBy: "Ratul",
-    assignmentNumber: 1,
-    submissionDeadline: "20 Aug 2026",
-  },
-  {
-    id: 2,
-    name: "English Essay",
-    className: "Class Seven",
-    createdBy: "Tim",
-    assignmentNumber: 2,
-    submissionDeadline: "25 Aug 2026",
-  },
-  {
-    id: 3,
-    name: "Science Project",
-    className: "Class Six",
-    createdBy: "Bokul",
-    assignmentNumber: 3,
-    submissionDeadline: "30 Aug 2026",
-  },
-];
+import { mockAdminAssignments } from "@/lib/mock-data";
 
 export default function AssignmentsPage() {
   return (
-    <div className="space-y-4">
-      <h1 className="text-2xl font-bold">Assignments</h1>
-
-      {assignments.map((assignment) => (
+    <div className="space-y-6">
+      <div className="flex items-end justify-between gap-4">
+        <SectionHeading
+          title="Assignments"
+          description="See all published work, edit an assignment, or delete it when necessary."
+        />
+        <Link href="/teacher/assignments/new">
+          <Button variant="outline">Create as teacher</Button>
+        </Link>
+      </div>
+      <div className="space-y-3">
+      {mockAdminAssignments.map((assignment) => (
         <AssignmentCard
           key={assignment.id}
           id={assignment.id}
@@ -43,6 +28,7 @@ export default function AssignmentsPage() {
           submissionDeadline={assignment.submissionDeadline}
         />
       ))}
+      </div>
     </div>
   );
 }

@@ -9,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { signupSchema, SignupFormData } from "../schemas/auth.schema";
 
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 
 export default function SignupForm() {
@@ -23,46 +24,51 @@ export default function SignupForm() {
   });
 
   const onSubmit = (data: SignupFormData) => {
-    console.log("SIGNUP CLICKED");
-    console.log(data);
-
-    router.push("/admin");
+    console.log("SIGNUP CLICKED", data);
+    router.push("/guest");
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="w-full max-w-sm space-y-0.5"
-    >
-      <div>
-        <Input placeholder="Full Name" type="text" {...register("fullName")} />
-        <p className="min-h-4 text-xs text-red-500">
-          {errors.fullName?.message}
-        </p>
-      </div>
-      <div>
-        <Input placeholder="Email" type="email" {...register("email")} />
-        <p className="min-h-4 text-xs text-red-500">{errors.email?.message}</p>
-      </div>
-      <div>
-        <Input
-          placeholder="Password"
-          type="password"
-          {...register("password")}
-        />
-        <p className="min-h-4 text-xs text-red-500">
-          {errors.password?.message}
-        </p>
-      </div>
-      <Button type="submit" className="w-full">
-        Sign Up
-      </Button>
-      <p className="text-center text-sm">
-        Already have an account?{" "}
-        <Link href="/login" className="underline">
-          Login
-        </Link>
-      </p>
-    </form>
+    <Card className="w-full max-w-md border-white/80 bg-white/90 shadow-[0_20px_70px_rgba(15,23,42,0.12)]">
+      <CardHeader>
+        <CardTitle>Create account</CardTitle>
+        <CardDescription>
+          New users will land on the pending screen until an admin assigns a role.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          <div>
+            <Input placeholder="Full Name" type="text" {...register("fullName")} />
+            <p className="min-h-4 text-xs text-red-500">
+              {errors.fullName?.message}
+            </p>
+          </div>
+          <div>
+            <Input placeholder="Email" type="email" {...register("email")} />
+            <p className="min-h-4 text-xs text-red-500">{errors.email?.message}</p>
+          </div>
+          <div>
+            <Input
+              placeholder="Password"
+              type="password"
+              {...register("password")}
+            />
+            <p className="min-h-4 text-xs text-red-500">
+              {errors.password?.message}
+            </p>
+          </div>
+          <Button type="submit" className="w-full">
+            Sign Up
+          </Button>
+          <p className="text-center text-sm text-slate-600">
+            Already have an account?{" "}
+            <Link href="/login" className="font-medium text-slate-900 underline">
+              Login
+            </Link>
+          </p>
+        </form>
+      </CardContent>
+    </Card>
   );
 }

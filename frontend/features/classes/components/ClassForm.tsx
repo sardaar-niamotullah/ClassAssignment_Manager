@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { classSchema, ClassFormData } from "../schemas/class.schema";
@@ -34,7 +34,7 @@ export default function ClassForm({
   const {
     register,
     handleSubmit,
-    watch,
+    control,
     setValue,
     formState: { errors },
   } = useForm<ClassFormData>({
@@ -47,9 +47,8 @@ export default function ClassForm({
     },
   });
 
-  const selectedTeachers = watch("teachers") ?? [];
-
-  const selectedStudents = watch("students") ?? [];
+  const selectedTeachers = useWatch({ control, name: "teachers" }) ?? [];
+  const selectedStudents = useWatch({ control, name: "students" }) ?? [];
 
   const toggleTeacher = (teacher: string) => {
     const updated = selectedTeachers.includes(teacher)

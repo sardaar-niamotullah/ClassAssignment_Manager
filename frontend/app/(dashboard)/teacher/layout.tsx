@@ -1,4 +1,4 @@
-import Link from "next/link";
+import AppShell from "@/components/app-shell";
 
 export default function TeacherLayout({
   children,
@@ -6,15 +6,12 @@ export default function TeacherLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className="min-h-screen">
-      <nav className="border-b">
-        <div className="flex gap-4 p-4">
-          <Link href="/teacher/assignments">Assignments</Link>
-          <Link href="/teacher/submissions">Submissions</Link>
-        </div>
-      </nav>
-
-      <div className="p-4">{children}</div>
-    </main>
+    <AppShell
+      role="teacher"
+      title="Teacher dashboard"
+      subtitle="Create assignments, publish them to a class, and review submissions."
+    >
+      {children}
+    </AppShell>
   );
 }

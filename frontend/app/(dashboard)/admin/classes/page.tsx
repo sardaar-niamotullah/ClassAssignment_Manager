@@ -1,37 +1,24 @@
-import { Button } from "@/components/ui/button";
-
-import ClassCard from "@/features/classes/components/ClassCard";
 import Link from "next/link";
-
-const classes = [
-  {
-    id: 1,
-    name: "Class Six",
-    teachers: ["Ratul", "Tim", "Bokul"],
-    studentCount: 4,
-    assignmentCount: 2,
-  },
-  {
-    id: 2,
-    name: "Class Seven",
-    teachers: ["Sakib", "Nahid"],
-    studentCount: 12,
-    assignmentCount: 5,
-  },
-];
+import SectionHeading from "@/components/section-heading";
+import { Button } from "@/components/ui/button";
+import ClassCard from "@/features/classes/components/ClassCard";
+import { mockClasses } from "@/lib/mock-data";
 
 export default function ClassesPage() {
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Classes</h1>
-
+    <div className="space-y-6">
+      <div className="flex items-end justify-between gap-4">
+        <SectionHeading
+          title="Classes"
+          description="Create, update, delete, and assign teachers or students to each class."
+        />
         <Link href="/admin/classes/new">
           <Button>Create New Class</Button>
         </Link>
       </div>
 
-      {classes.map((classItem) => (
+      <div className="space-y-3">
+      {mockClasses.map((classItem) => (
         <ClassCard
           key={classItem.id}
           id={classItem.id}
@@ -41,6 +28,7 @@ export default function ClassesPage() {
           assignmentCount={classItem.assignmentCount}
         />
       ))}
+      </div>
     </div>
   );
 }
