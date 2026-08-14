@@ -11,15 +11,12 @@ export default function AdminLayout({
         <div className="flex gap-4 p-4">
           <Link href="/admin/users">Users</Link>
           <Link href="/admin/classes">Classes</Link>
-          <Link href="/admin/assignments">
-            Assignments
-          </Link>
+          <Link href="/admin/assignments">Assignments</Link>
+          <Link href="/admin/submissions">Submissions</Link>
         </div>
       </nav>
 
-      <div className="p-4">
-        {children}
-      </div>
+      <div className="p-4">{children}</div>
     </main>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { MoreVertical } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 import {
   DropdownMenu,
@@ -26,6 +27,11 @@ export default function AssignmentCard({
   assignmentNumber,
   submissionDeadline,
 }: AssignmentCardProps) {
+  const router = useRouter();
+
+  const handleEdit = () => {
+    router.push(`/admin/assignments/${id}`);
+  };
   const handleDelete = () => {
     console.log(`Delete assignment ${id}`);
   };
@@ -57,8 +63,10 @@ export default function AssignmentCard({
         <DropdownMenuTrigger className="rounded-md p-2 hover:bg-accent">
           <MoreVertical className="size-5" />
         </DropdownMenuTrigger>
-
         <DropdownMenuContent align="end">
+          <DropdownMenuItem onClick={handleEdit}>
+            Edit Assignment
+          </DropdownMenuItem>
           <DropdownMenuItem variant="destructive" onClick={handleDelete}>
             Delete Assignment
           </DropdownMenuItem>
