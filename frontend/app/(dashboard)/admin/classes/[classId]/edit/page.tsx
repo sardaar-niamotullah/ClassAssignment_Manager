@@ -1,4 +1,5 @@
 import ClassForm from "@/features/classes/components/ClassForm";
+import SectionHeading from "@/components/section-heading";
 
 type Props = {
   params: Promise<{
@@ -19,8 +20,10 @@ export default async function EditClassPage({ params }: Props) {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold">Edit Class #{classId}</h1>
-
+      <SectionHeading
+        title={`Edit class #${classId}`}
+        description="Update the class name and reassign teachers or students."
+      />
       <ClassForm isEdit initialValues={mockClass} />
     </div>
   );

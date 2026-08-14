@@ -1,4 +1,5 @@
 import AssignmentForm from "@/features/assignments/components/AssignmentForm";
+import SectionHeading from "@/components/section-heading";
 
 type Props = {
   params: Promise<{
@@ -17,9 +18,11 @@ export default async function EditAssignmentPage({ params }: Props) {
   };
 
   return (
-    <div className="space-y-4">
-      <h1 className="text-2xl font-bold">Edit Assignment #{assignmentId}</h1>
-
+    <div className="space-y-6">
+      <SectionHeading
+        title={`Edit assignment #${assignmentId}`}
+        description="Update the details of this assignment before publishing or resaving."
+      />
       <AssignmentForm isEdit initialValues={assignment} />
     </div>
   );

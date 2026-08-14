@@ -1,4 +1,5 @@
 import StudentSubmissionForm from "@/features/assignments/components/StudentSubmissionForm";
+import SectionHeading from "@/components/section-heading";
 
 type Props = {
   params: Promise<{
@@ -10,9 +11,11 @@ export default async function EditSubmissionPage({ params }: Props) {
   const { submissionId } = await params;
 
   return (
-    <div className="space-y-4">
-      <h1 className="text-2xl font-bold">Edit Submission #{submissionId}</h1>
-
+    <div className="space-y-6">
+      <SectionHeading
+        title={`Edit submission #${submissionId}`}
+        description="Replace your answer file before the deadline and keep your work up to date."
+      />
       <StudentSubmissionForm
         isEdit
         assignmentName="Math Homework"

@@ -10,9 +10,9 @@ export default function SubmissionsPage() {
         description="Edit a submission before the deadline or check your graded work."
       />
       <div className="space-y-3">
-      {mockStudentSubmissions.map((submission) => (
-        <StudentSubmissionCard key={submission.id} {...submission} />
-      ))}
+        {mockStudentSubmissions.map((submission) => (
+          <StudentSubmissionCard key={submission.id} {...submission} />
+        ))}
       </div>
     </div>
   );

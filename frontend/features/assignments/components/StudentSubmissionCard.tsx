@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-import { MoreVertical } from "lucide-react";
+import { CalendarDays, MoreVertical, Trophy } from "lucide-react";
 
 import {
   DropdownMenu,
@@ -42,14 +42,47 @@ export default function StudentSubmissionCard({
   };
 
   return (
-    <div className="rounded-lg border p-4">
-      <div className="flex justify-between">
-        <div>
-          <h3 className="text-lg font-semibold">{assignmentName}</h3>
+    <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+      <div className="flex items-start justify-between gap-4">
+        <div className="space-y-3">
+          <div>
+            <h3 className="text-lg font-semibold text-slate-950">
+              {assignmentName}
+            </h3>
+            <p className="text-sm text-slate-500">Your submission record</p>
+          </div>
+
+          <div className="flex flex-wrap gap-2">
+            <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-700">
+              <Trophy className="size-3.5" />
+              Student {studentId}
+            </span>
+            <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-700">
+              <CalendarDays className="size-3.5" />
+              Submitted {submissionDate}
+            </span>
+            <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-700">
+              <CalendarDays className="size-3.5" />
+              Due {dueDate}
+            </span>
+            <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-700">
+              <Trophy className="size-3.5" />
+              {awardedMarks ?? "Not graded"} / {totalMarks}
+            </span>
+          </div>
+
+          <div className="flex flex-wrap gap-4 text-sm text-slate-600">
+            <Link href="#" className="font-medium text-slate-900 underline underline-offset-4">
+              Question PDF ({questionPdf})
+            </Link>
+            <Link href="#" className="font-medium text-slate-900 underline underline-offset-4">
+              Student Answer PDF ({answerPdf})
+            </Link>
+          </div>
         </div>
 
         <DropdownMenu>
-          <DropdownMenuTrigger className="rounded-md p-2 hover:bg-accent">
+          <DropdownMenuTrigger className="rounded-full border border-slate-200 p-2 text-slate-600 transition hover:bg-slate-50 hover:text-slate-950">
             <MoreVertical className="size-5" />
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
@@ -58,30 +91,6 @@ export default function StudentSubmissionCard({
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-      </div>
-
-      <div className="mt-3 space-y-1">
-        <p>
-          {studentId}
-        </p>
-
-        <p>Total Marks: {totalMarks}</p>
-
-        <p>Awarded Marks: {awardedMarks ?? "Not Graded"}</p>
-
-        <p>Submission Date: {submissionDate}</p>
-
-        <p>Due Date: {dueDate}</p>
-      </div>
-
-      <div className="mt-3 flex flex-col gap-1">
-        <Link href="#" className="text-sm underline">
-          Question PDF ({questionPdf})
-        </Link>
-
-        <Link href="#" className="text-sm underline">
-          Student Answer PDF ({answerPdf})
-        </Link>
       </div>
     </div>
   );
